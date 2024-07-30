@@ -47,3 +47,4 @@ coverage
 *.orig
 *.old
 *.backup
+logs.txt
