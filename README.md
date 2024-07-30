@@ -1,9 +1,14 @@
+
+## Docker setup
+
 ```
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 docker exec -it  container bash
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml down -v
+docker build . -t onlineaid/k8s-web [create image]
+docker push onlineaid/k8s-web [push docker hub]
 
 ```
 
@@ -56,8 +61,6 @@ kubectl create deploy nginx-deploy --image=nginx
 kubectl get deploy
 kubectl get deployment
 kubectl get deployments
-
-
 kubectl get pod / pods
 
 
@@ -83,8 +86,6 @@ kubectl describe service nginx-deploy
 kubectl delete deployment nginx-deploy
 kubectl delete service nginx-deploy
 
-docker build . -t onlineaid/k8s-web [create image]
-docker push onlineaid/k8s-web [push docker hub]
 kubectl create deployment k8s-web --image=onlineaid/k8s-web [pull image and run container]
 kubectl scale deploy k8s-web --replicas=3 [create replica as much you need but don't make 100 plus]
 kubectl expose deploy k8s-web --port=5000 --target-pod=7000 [set port & you can set target port]
