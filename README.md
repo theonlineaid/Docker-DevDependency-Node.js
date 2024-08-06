@@ -76,7 +76,6 @@ minikube ssh [access minikube]
 ==> then hit <== -----------> curl http://ip
 
 
-
 Before hit this cmd check your services
 kubectl get service/s
 kubectl expose deploy nginx-deploy --port=8080 --target-port=80 [now you get service]
@@ -123,3 +122,17 @@ minikube service k8s-web
 minikube dashboard
 
 ```
+
+
+## Detailed Logs
+If you need more detailed logs, you can use the --file option with the minikube logs command:
+
+```
+
+minikube logs --file=minikube-logs.txt
+
+```
+
+
+## This command is powerful and should be used with caution as it will remove a large number of resources.
+```kubectl delete all --all```
