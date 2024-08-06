@@ -9,6 +9,7 @@ docker exec -it  container bash
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml down -v
 docker build . -t onlineaid/k8s-web [create image]
 docker push onlineaid/k8s-web [push docker hub]
+docker pull onlineaid/k8s-web
 
 ```
 
@@ -98,5 +99,27 @@ kubectl get svc
 minikube ssh
 curl 10.108.122.109:7000
 
+kubectl expose deploy k8s-web --type=LoadBalancer --port=7000 [It will set target port you don't need to set target port]
+kubectl scale deploy k8s-web --replicas=4
+kubectl get svc
+kubectl get deploy
+kubectl get pod
+kubectl get pod -o wide
+kubectl describe deploy k8s-web
+
+docker push onlineaid/k8s-web
+docker build . -t onlineaid/k8s-web
+docker build . -t onlineaid/k8s-web:2.0.0
+docker push onlineaid/k8s-web:2.0.0
+
+
+kubectl set image deploy k8s-web k8s-web=onlineaid/k8s-web
+kubectl rollout status deploy k8s-web
+kubectl get pod
+minikube service k8s-web
+kubectl set image deploy k8s-web k8s-web=onlineaid/k8s-web:2.0.0
+kubectl rollout status deploy k8s-web
+minikube service k8s-web
+minikube dashboard
 
 ```

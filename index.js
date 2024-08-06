@@ -1,4 +1,5 @@
 const express = require('express');
+const os = require('os');
 
 const app = express();
 const PORT = process.env.PORT || 7000;
@@ -58,8 +59,15 @@ app.get('/', (req, res) => {
     const output = iterativeBinarySearch(arr, target);
     console.log(output)
     
-    res.send('Welcome to the Express server! development');
+    res.send('Welcome to the Express server! development v2' + os.hostname);
 })
+
+
+app.get('/get-data', (req, res) => {
+    res.json({ message: "hi" });
+  });
+  
+
 
 app.listen(PORT, () => console.log(`Express server listening ${PORT}`));
 
