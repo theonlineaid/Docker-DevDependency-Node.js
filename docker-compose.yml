@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   node-app:
@@ -12,5 +12,5 @@ services:
   mongo:
     image: mongo
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example

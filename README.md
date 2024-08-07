@@ -1,4 +1,3 @@
-
 ## Docker setup
 
 ```
@@ -14,6 +13,7 @@ docker pull onlineaid/k8s-web
 ```
 
 ## Minikube setup
+
 ```
 sudo dpkg -i virtualbox-7.0_7.0.20-163906~Ubuntu~jammy_amd64.deb
 minikube start --driver=virtualbox
@@ -26,6 +26,8 @@ hostnamectl
 minikube status
 minikube start --drive=virtualbox / docker / vmware
 minikube status
+minikube stop
+minikube delete
 
 minikube ssh
 docker ps
@@ -37,11 +39,20 @@ kubectl get namespace
 kubectl get node
 kubectl config-info
 kubectl config current-context
+kubectl config get-contexts
+kubectl config use-context minikube
+kubectl config rename-context [old-name] [new-name]
+kubectl config delete-context minikube
+
 
 [all cmd work in namespace]
 kubectl get namespace
 kubectl get namespace.
 kubectl get namespaces
+kubectl get ns
+
+kubectl get pod -A
+kubectl get pod/s --all-namespaces
 
 kubectl get pod --namespace
 kubectl get pod --namespace=default
@@ -123,8 +134,8 @@ minikube dashboard
 
 ```
 
-
 ## Detailed Logs
+
 If you need more detailed logs, you can use the --file option with the minikube logs command:
 
 ```
@@ -133,6 +144,19 @@ minikube logs --file=minikube-logs.txt
 
 ```
 
-
 ## This command is powerful and should be used with caution as it will remove a large number of resources.
-```kubectl delete all --all```
+
+`kubectl delete all --all`
+
+## The declarative way vs the imperative way
+
+- • Imperative
+  • Using kubectl commands, issue a series of commands to create resources
+  • Great for learning, testing and troubleshooting
+  • It's like code
+
+- • Declarative
+  • Using kubectl and YAML manifests defining the resources that you need
+  • Reproducible, repeatable
+  • Can be saved in source control
+  • It's like data that can be parsed and modified
