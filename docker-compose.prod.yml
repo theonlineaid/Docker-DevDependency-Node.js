@@ -9,8 +9,8 @@ services:
     environment:
       - NODE_ENV=production
     command: ["node", "index.js"]
-  mongo:
-    image: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+  # mongo:
+  #   image: mongo
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: example
