@@ -48,3 +48,5 @@ coverage
 *.old
 *.backup
 logs.txt
+mongodb/.bash_history
+
