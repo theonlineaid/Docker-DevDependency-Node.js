@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 
     function linearSearch(arr, target, len = arr.length) {
         for (let i = 0; i < len; i++) {
-            if (arr[i] == target) 
+            if (arr[i] == target)
                 return i;
         }
         return -1;
@@ -38,12 +38,12 @@ app.get('/', (req, res) => {
     function iterativeBinarySearch(arr, target) {
         let left = 0;
         let right = arr.length - 1;
-    
+
         while (left <= right) {
             let mid = Math.floor((left + right) / 2); //10
 
             // console.log(mid)
-    
+
             if (arr[mid] === target) {
                 return mid;
             } else if (arr[mid] < target) {
@@ -52,21 +52,21 @@ app.get('/', (req, res) => {
                 right = mid - 1;
             }
         }
-    
+
         return -1;
     }
 
     const output = iterativeBinarySearch(arr, target);
     console.log(output)
-    
+
     res.send('Welcome to the Express server! development v2' + os.hostname);
 })
 
 
 app.get('/get-data', (req, res) => {
     res.json({ message: "hi" });
-  });
-  
+});
+
 
 
 app.listen(PORT, () => console.log(`Express server listening ${PORT}`));
