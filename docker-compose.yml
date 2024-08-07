@@ -17,6 +17,11 @@ services:
     volumes:
       - ./mongodb/:/data/db/
 
+# Is create a vloume name check docker vloume ls
+volumes:
+  mongo:
+    name: mongo_volume_data # it will set your custom volume name
+
 
   # mongo:
   #   image: mongo

@@ -28,8 +28,8 @@ docker run -it --rm --network web-hello_default mongo mongosh --host mongo -u "o
 #     - ./db_data/:/data/db/
 ----------------------------
 - Delete db_data folder 
-sudo chown -R $(whoami):$(whoami) /home/bdtask24-8/Documents/k8s/web-hello/db_data
-chmod -R 755 /home/bdtask24-8/Documents/k8s/web-hello/db_data
+sudo chown -R $(whoami):$(whoami) /home/bdtask24-8/Documents/k8s/web-hello/mongodb
+chmod -R 755 /home/bdtask24-8/Documents/k8s/web-hello/mongodb
 
 ```
 
