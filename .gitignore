@@ -2,3 +2,4 @@ node_modules
 logs.txt
 mongodb
 mongodb/.bash_history
+db_data
