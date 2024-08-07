@@ -10,6 +10,26 @@ docker build . -t onlineaid/k8s-web [create image]
 docker push onlineaid/k8s-web [push docker hub]
 docker pull onlineaid/k8s-web
 
+
+docker network ls
+docker network rm docker-nodejs_default -f
+
+```
+
+## MongoDB setup
+
+```
+mongosh -u "onlineaid" -p "password"
+docker run -it --rm --network web-hello_default mongo mongosh --host mongo -u "onlineaid" -p "password" --authenticationDatabase "admin"    
+
+----------------------------
+#   volumes:
+#     - ./db_data/:/data/db/
+----------------------------
+- Delete db_data folder 
+sudo chown -R $(whoami):$(whoami) /home/bdtask24-8/Documents/k8s/web-hello/mongodb
+chmod -R 755 /home/bdtask24-8/Documents/k8s/web-hello/mongodb
+
 ```
 
 ## Minikube setup
