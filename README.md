@@ -2,6 +2,7 @@
 
 ```
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 docker exec -it  container bash
@@ -20,13 +21,13 @@ docker network rm docker-nodejs_default -f
 
 ```
 mongosh -u "onlineaid" -p "password"
-docker run -it --rm --network web-hello_default mongo mongosh --host mongo -u "onlineaid" -p "password" --authenticationDatabase "admin"    
+docker run -it --rm --network web-hello_default mongo mongosh --host mongo -u "onlineaid" -p "password" --authenticationDatabase "admin"
 
 ----------------------------
 #   volumes:
 #     - ./db_data/:/data/db/
 ----------------------------
-- Delete db_data folder 
+- Delete db_data folder
 sudo chown -R $(whoami):$(whoami) /home/bdtask24-8/Documents/k8s/web-hello/mongodb
 chmod -R 755 /home/bdtask24-8/Documents/k8s/web-hello/mongodb
 

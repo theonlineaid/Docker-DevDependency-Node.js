@@ -19,7 +19,7 @@ services:
 
 # Is create a vloume name check docker vloume ls
 volumes:
-  mongo:
+  mongodb:
     name: mongo_volume_data # it will set your custom volume name
 
 
