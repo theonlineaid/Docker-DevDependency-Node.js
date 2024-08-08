@@ -9,6 +9,9 @@ services:
       - "7000:7000"
     environment:
       - PORT=7000
+    depends_on:
+      - mongo
+
   mongo:
     image: mongo
     environment:

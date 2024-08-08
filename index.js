@@ -1,6 +1,7 @@
 const express = require('express');
 const os = require('os');
 const mongoose = require('mongoose');
+const { MONGO_USER, MONGO_PASS, MONGO_IPAD, MONGO_PORT } = require('./config/config');
 
 const app = express();
 const PORT = process.env.PORT || 7000;
@@ -9,77 +10,21 @@ const PORT = process.env.PORT || 7000;
 app.use(express.json());
 
 const connectDB = async () => {
+    const mongoUrl = `mongodb://${MONGO_USER}:${MONGO_PASS}@${MONGO_IPAD}:${MONGO_PORT}/?authSource=admin`
     try {
-        const conn = await mongoose.connect(`mongodb://onlineaid:password@mongo:27017/?authSource=admin`, {
-            // useNewUrlParser: true,
-            // useUnifiedTopology: true,
-            // useCreateIndex: true,
-            // useFindAndModify: false,
-        });
-        console.log(`MongoDB Connected: ${conn.connection.host}`);
+        const conn = await mongoose.connect(mongoUrl);
+        console.log(`Connected ${conn.connection.host}db successfully....`);
 
     } catch (error) {
-        console.error("Error connecting to MongoDB",)
+        console.error("Error connecting to MongoDB:", error);
+        console.log("Retrying connection in 5 seconds...");
+        setTimeout(connectDB, 5000);  // 5000 ms = 5 seconds
     }
 }
 
-// mongodb+srv://omorfarukdev:qZQKznbIqZoQVTfq@cluster0.4snxc.mongodb.net/
-
 app.get('/', (req, res) => {
-
-    function linearSearch(arr, target, len = arr.length) {
-        for (let i = 0; i < len; i++) {
-            if (arr[i] == target)
-                return i;
-        }
-        return -1;
-    }
-
-
-    // Driver code
-    let arr = [2, 3, 4, 10, 40, 70, 100];
-    // let len = arr.length;
-    let target = 4;
-
-    // Function call
-    let result = linearSearch(arr, target);
-
-    if (result === -1) {
-        console.log("Element is not present in array")
-    } else {
-        console.log("Element is present at index " + result)
-    }
-
-
-
-
-    function iterativeBinarySearch(arr, target) {
-        let left = 0;
-        let right = arr.length - 1;
-
-        while (left <= right) {
-            let mid = Math.floor((left + right) / 2); //10
-
-            // console.log(mid)
-
-            if (arr[mid] === target) {
-                return mid;
-            } else if (arr[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
-        }
-
-        return -1;
-    }
-
-    const output = iterativeBinarySearch(arr, target);
-    console.log(output)
-
     res.send('Welcome to the Express server! development v2 ' + os.hostname);
 })
-
 
 app.get('/get-data', (req, res) => {
     res.json({ message: "hi" });
@@ -89,4 +34,3 @@ app.listen(PORT, () => {
     connectDB()
     console.log(`Express server listening ${PORT}`)
 });
-
