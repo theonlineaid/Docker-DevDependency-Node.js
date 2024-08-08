@@ -15,12 +15,12 @@ services:
       MONGO_INITDB_ROOT_USERNAME: onlineaid
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
-      - ./mongodb/:/data/db/
+      - mongodb:/data/db/
 
 # Is create a vloume name check docker vloume ls
 volumes:
   mongodb:
-    name: mongo_volume_data # it will set your custom volume name
+    name: mongodb_volume_data # it will set your custom volume name
 
 
   # mongo:
