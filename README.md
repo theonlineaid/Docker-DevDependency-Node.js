@@ -2,8 +2,9 @@
 
 ```
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build [Detach mode]
+docker inspect container.name/id
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v       [Down with volume mounted]
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 docker exec -it  container bash
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml down -v
@@ -14,6 +15,7 @@ docker pull onlineaid/k8s-web
 
 docker network ls
 docker network rm docker-nodejs_default -f
+docker exec -it web-hello_node-app_1 rm -rf /app/node_modules
 
 ```
 
@@ -27,7 +29,8 @@ docker run -it --rm --network web-hello_default mongo mongosh --host mongo -u "o
 #   volumes:
 #     - ./db_data/:/data/db/
 ----------------------------
-- Delete db_data folder
+- Delete db_data folder  or Access Control and add any package
+sudo chown -R $(whoami):$(whoami) ./node_modules
 sudo chown -R $(whoami):$(whoami) /home/bdtask24-8/Documents/k8s/web-hello/mongodb
 chmod -R 755 /home/bdtask24-8/Documents/k8s/web-hello/mongodb
 

@@ -1,12 +1,30 @@
 const express = require('express');
 const os = require('os');
 const mongoose = require('mongoose');
+// const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const app = express();
 const PORT = process.env.PORT || 7000;
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+
+const connectDB = async () => {
+    try {
+      const conn = await mongoose.connect(`mongodb://onlineaid:password@mongo:27017/?authSource=admin`, {
+        // useNewUrlParser: true,
+        // useUnifiedTopology: true,
+        // useCreateIndex: true,
+        // useFindAndModify: false,
+      });
+      console.log(`MongoDB Connected: ${conn.connection.host}`);
+      
+    } catch (error) {
+      console.error("Error connecting to MongoDB",)
+    }
+  }
+
+// mongodb+srv://omorfarukdev:qZQKznbIqZoQVTfq@cluster0.4snxc.mongodb.net/
 
 app.get('/', (req, res) => {
 
@@ -68,7 +86,8 @@ app.get('/get-data', (req, res) => {
     res.json({ message: "hi" });
 });
 
-
-
-app.listen(PORT, () => console.log(`Express server listening ${PORT}`));
+app.listen(PORT, () =>  {
+    connectDB()
+    console.log(`Express server listening ${PORT}`)
+});
 
