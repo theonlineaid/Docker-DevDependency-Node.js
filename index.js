@@ -78,7 +78,7 @@ app.get('/', (req, res) => {
     const output = iterativeBinarySearch(arr, target);
     console.log(output)
 
-    res.send('Welcome to the Express server! development v2' + os.hostname);
+    res.send('Welcome to the Express server! development v2 ' + os.hostname);
 })
 
 
