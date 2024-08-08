@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   node-app:
@@ -10,5 +10,14 @@ services:
       - .:/app
       - /app/node_modules
     environment:
-      - NODE_ENV=development
+      NODE_ENV: development
+      MONGO_USER: onlineaid
+      MONGO_PASS: password
+      # MONGO_IPAD: mongo
+      # MONGO_PORT: 27017
     command: ["npm", "run", "dev"]
+
+  mongo:
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: onlineaid
+      MONGO_INITDB_ROOT_PASSWORD: password

@@ -20,6 +20,15 @@ docker logs web-hello_node-app_1
 
 ```
 
+## Run single container with no dependencies
+
+- huge advance cmd
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps node-app
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d mongo
+```
+
 ## MongoDB setup
 
 ```
