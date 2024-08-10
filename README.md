@@ -195,3 +195,12 @@ minikube logs --file=minikube-logs.txt
   • Reproducible, repeatable
   • Can be saved in source control
   • It's like data that can be parsed and modified
+
+
+## Jenkins integration
+
+```
+docker run -d --name jenkins -p 8080:8080 -p 50000:50000 --restart=always -v /home/bdtask24-8/Documents/k8s/:/var/jenkins_home jenkins:2.60.3
+docker run -d --name jenkins -p 8080:8080 -v $PWD/jenkins/ jenkins/jenkins 
+docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v $PWD:/var/jenkins_home jenkins/jenkins
+```
