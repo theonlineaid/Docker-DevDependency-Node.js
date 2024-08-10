@@ -49,6 +49,16 @@ const authCtrl = {
         }
     },
 
+    // Get Posts
+    getPosts: async (req, res) => {
+        try {
+            const posts = await Post.find().populate('userId', 'username'); // Populating the 'userId' field with the username
+            res.status(200).json(posts);
+        } catch (error) {
+            res.status(500).json({ message: 'Failed to retrieve posts', error });
+        }
+    },
+
     // Comment on a Post
     addComment: async (req, res) => {
         try {
