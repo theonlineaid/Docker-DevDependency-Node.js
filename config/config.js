@@ -5,8 +5,8 @@
 //     MONGO_PASS: process.env.MONGO_PASS || "password",
 // }
 
-import dotenv from "dotenv";
-dotenv.config({path: '.env'});
+// import dotenv from "dotenv";
+// dotenv.config({path: '.env'});
 
 export const MONGO_IPAD = process.env.MONGO_IPAD || "mongo";
 export const MONGO_PORT = process.env.MONGO_PORT || 27017;
