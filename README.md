@@ -15,6 +15,7 @@ docker pull onlineaid/k8s-web
 
 docker network ls
 docker network rm docker-nodejs_default -f
+docker network inspect web-hello_default
 docker exec -it web-hello_node-app_1 rm -rf /app/node_modules
 docker logs web-hello_node-app_1
 
